@@ -9,7 +9,6 @@ import {
   Paper,
   CardMedia,
   Divider,
-  useMediaQuery,
   LinearProgress,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -22,48 +21,22 @@ import {
   TimelineContent,
   TimelineDot,
 } from "@mui/lab";
-import PropTypes from "prop-types";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 
-// ====== CUSTOM STEP ICON ======
-const GreenStepIconRoot = styled("div")(({ ownerState }) => ({
-  color: ownerState.completed || ownerState.active ? "#A6D02E" : "#ccc",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: 30,
-  height: 30,
-  borderRadius: "50%",
-  border: `2px solid ${
-    ownerState.completed || ownerState.active ? "#A6D02E" : "#ccc"
-  }`,
-  backgroundColor: "#fff",
-  zIndex: 1,
-}));
-
 const ProgressWithLabels = ({ leftLabel, rightLabel, value }) => {
+  let style = {
+    color: "#b0b4bb",
+    fontWeight: 100,
+    fontSize: "0.7rem",
+  };
   return (
     <Box sx={{ width: "100%", mt: 2 }}>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography
-          variant="subtitle1"
-          sx={{
-            color: "#b0b4bb",
-            fontWeight: 100,
-            fontSize: "0.7rem",
-          }}
-        >
+        <Typography variant="subtitle1" sx={style}>
           {leftLabel}
         </Typography>
-        <Typography
-          variant="subtitle1"
-          sx={{
-            color: "#b0b4bb",
-            fontWeight: 100,
-            fontSize: "0.7rem",
-          }}
-        >
+        <Typography variant="subtitle1" sx={style}>
           {rightLabel}
         </Typography>
       </Box>
@@ -81,33 +54,6 @@ const ProgressWithLabels = ({ leftLabel, rightLabel, value }) => {
       />
     </Box>
   );
-};
-
-function GreenStepIcon(props) {
-  const { active, completed, className } = props;
-
-  return (
-    <GreenStepIconRoot ownerState={{ active, completed }} className={className}>
-      {completed ? (
-        <Check fontSize="small" />
-      ) : (
-        <div
-          style={{
-            width: 8,
-            height: 8,
-            borderRadius: "50%",
-            backgroundColor: "currentColor",
-          }}
-        />
-      )}
-    </GreenStepIconRoot>
-  );
-}
-
-GreenStepIcon.propTypes = {
-  active: PropTypes.bool,
-  completed: PropTypes.bool,
-  className: PropTypes.string,
 };
 
 const StyledTimelineItem = styled(TimelineItem)(({ theme }) => ({
@@ -182,9 +128,9 @@ export default function Page() {
           alt="green sandwich"
           sx={{
             borderRadius: "0.845rem",
-            height: "100%", // Make it full height
-            objectFit: "cover", // Ensure the image covers the area without distortion
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Add bottom shadow
+            height: "100%",
+            objectFit: "cover",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
           }}
         />
 
@@ -259,7 +205,6 @@ export default function Page() {
                         : ""}
                     </TimelineDot>
 
-                    {/* Conditional rendering of TimelineConnector */}
                     {index === 0 && (
                       <TimelineConnector
                         sx={{
