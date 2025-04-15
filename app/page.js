@@ -72,7 +72,7 @@ const ProgressWithLabels = ({ leftLabel, rightLabel, value }) => {
         value={value}
         sx={{
           borderRadius: 5,
-          height:"0.3rem",
+          height: "0.3rem",
           bgcolor: "#eaecf0",
           "& .MuiLinearProgress-bar": {
             bgcolor: "#8a6dff",
@@ -131,6 +131,8 @@ export default function Page() {
       description: "و با یک کامنت از آخرین پست اینستاگرامی ما حمایت کنید.",
       icon: <Check />,
       color: "#33c678",
+      borderColor: "#33c678",
+      fontSize: "1rem",
     },
     {
       id: 2,
@@ -139,14 +141,16 @@ export default function Page() {
         "جزو اولین افرادی باشید که «ساندویچ سبز» جدید ما را امتحان می‌کنند!",
       icon: <Circle />,
       color: "#33c678",
+      borderColor: "#33c678",
+      fontSize: "0.5rem",
     },
     {
       id: 3,
       title: "نظرتون درباره این محصول چی بود؟",
       description:
         "نظر شما به بهبود کیفیت محصولات و خدمات ما کمک خیلی زیادی می‌کنه :)",
-      icon: <Check />,
-      color: "#fffff",
+      color: "white",
+      borderColor: "#e7e8eb",
     },
   ];
 
@@ -194,9 +198,7 @@ export default function Page() {
             >
               اولین نفری باشید که «ساندویچ سبز» را امتحان می‌کند!
             </Typography>
-            <Typography
-              sx={{ fontSize: "0.75rem", color: "#b0b4bb", fontWeight: 400 }}
-            >
+            <Typography sx={{ fontSize: "0.75rem", color: "#b0b4bb" }}>
               یک صبحانه مقوی و سالم با ترکیبی تازه از مواد مغذی، ساندویچ سبز
               جدید ما اماده شده است تا روزتان را پر انرژی شروع کنید
             </Typography>
@@ -208,14 +210,14 @@ export default function Page() {
             >
               مهلت:{" "}
               <span style={{ color: "#818692", marginRight: "0.2rem" }}>
-              ۱۲ فرودین ۱۴۰۴
+                ۱۲ فرودین ۱۴۰۴
               </span>
             </Typography>
           </CardContent>
         </Card>
 
         <Card variant="outlined" sx={{ my: 2, borderRadius: "16px" }}>
-          <CardContent style={{ paddingBottom: "1rem" }}>
+          <CardContent style={{ paddingBottom: "0.4rem" }}>
             <Typography
               variant="h6"
               component="h2"
@@ -245,12 +247,16 @@ export default function Page() {
                         justifyContent: "center",
                         margin: 0,
                         width: "16px",
-                        height: "17px",
+                        height: "16px",
+                        boxShadow: "none",
+                        border: `1.5px solid ${milestone.borderColor}`,
                       }}
                     >
-                       {React.cloneElement(milestone.icon, {
-                        sx: { fontSize: "1rem" },
-                      })}
+                      {milestone.icon
+                        ? React.cloneElement(milestone.icon, {
+                            sx: { fontSize: milestone.fontSize },
+                          })
+                        : ""}
                     </TimelineDot>
 
                     {/* Conditional rendering of TimelineConnector */}
@@ -266,7 +272,7 @@ export default function Page() {
                       <TimelineConnector
                         sx={{
                           border: "none",
-                          borderLeft: "2px dashed lightGray",
+                          borderLeft: "1.5px dashed #eff0f1",
                           height: "100%",
                           margin: 0,
                           width: "0",
@@ -340,16 +346,25 @@ export default function Page() {
                             <Box sx={{ display: "flex", alignItems: "end" }}>
                               <Typography
                                 variant="body1"
-                                sx={{ fontWeight: 600, ml: 1,fontSize:"0.8rem" }}
+                                sx={{
+                                  fontWeight: 600,
+                                  ml: 1,
+                                  fontSize: "0.8rem",
+                                }}
                               >
-                                1000 <span style={{ color: "#6b47e1" }}>XP</span>
+                                <span style={{ color: "#6b47e1" }}>XP</span>{" "}
+                                ۱۰۰۰
                               </Typography>
 
                               <Typography
                                 variant="body1"
-                                sx={{ fontWeight: 600, textAlign: "right",fontSize:"0.8rem" }}
+                                sx={{
+                                  fontWeight: 600,
+                                  textAlign: "right",
+                                  fontSize: "0.8rem",
+                                }}
                               >
-                                10
+                                ۱۰
                               </Typography>
                               <Paid sx={{ color: "#9dd5b4" }} />
                             </Box>
@@ -362,8 +377,8 @@ export default function Page() {
                         <>
                           <Box sx={{ width: "100%" }}>
                             <ProgressWithLabels
-                              leftLabel="میزان پیشرفت : 50%"
-                              rightLabel="1 از 2"
+                              leftLabel="میزان پیشرفت : ۵۰%"
+                              rightLabel="۱ از ۲"
                               value={60}
                             />
                           </Box>
@@ -372,7 +387,7 @@ export default function Page() {
                               display: "flex",
                               justifyContent: "space-between",
                               alignItems: "center",
-                              margin:"0.8rem 0rem 1rem 0rem",
+                              margin: "0.8rem 0rem 1rem 0rem",
                               width: "100%",
                             }}
                           >
@@ -390,16 +405,25 @@ export default function Page() {
                             <Box sx={{ display: "flex", alignItems: "end" }}>
                               <Typography
                                 variant="body1"
-                                sx={{ fontWeight: 600, ml: 1, fontSize:"0.8rem" }}
+                                sx={{
+                                  fontWeight: 600,
+                                  ml: 1,
+                                  fontSize: "0.8rem",
+                                }}
                               >
-                                3000 <span style={{ color: "#6b47e1" }}>XP</span>
+                                <span style={{ color: "#6b47e1" }}>XP</span>{" "}
+                                ۳۰۰۰
                               </Typography>
 
                               <Typography
                                 variant="body1"
-                                sx={{ fontWeight: 600, textAlign: "right", fontSize:"0.8rem" }}
+                                sx={{
+                                  fontWeight: 600,
+                                  textAlign: "right",
+                                  fontSize: "0.8rem",
+                                }}
                               >
-                                10
+                                ۱۰
                               </Typography>
                               <Paid sx={{ color: "#f6ce62" }} />
                             </Box>
@@ -415,7 +439,7 @@ export default function Page() {
                               display: "flex",
                               justifyContent: "space-between",
                               alignItems: "center",
-                              margin:"0.7rem 0rem 0.6rem 0rem",
+                              margin: "0.7rem 0rem 0.6rem 0rem",
                               width: "100%",
                             }}
                           >
@@ -433,9 +457,13 @@ export default function Page() {
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                               <Typography
                                 variant="body1"
-                                sx={{ fontWeight: 600, ml: 1 , fontSize:"0.8rem"}}
+                                sx={{
+                                  fontWeight: 600,
+                                  ml: 1,
+                                  fontSize: "0.8rem",
+                                }}
                               >
-                                500 <span style={{ color: "#6b47e1" }}>XP</span>
+                                <span style={{ color: "#6b47e1" }}>XP</span> ۵۰۰
                               </Typography>
                             </Box>
                           </Box>
@@ -455,7 +483,7 @@ export default function Page() {
                             }
                             sx={{
                               color: "#a2a2a7",
-                              fontSize:"0.84rem",
+                              fontSize: "0.84rem",
                               borderColor: "gray",
                               borderRadius: "0.7rem",
                               "&:hover": {
